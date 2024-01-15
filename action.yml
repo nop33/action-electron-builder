@@ -1,5 +1,5 @@
-name: Macro Electron Builder Action
-author: William Hutchinson
+name: nop33 Electron Builder Action
+author: Ilias Trichopoulos
 description: GitHub Action for building and releasing Electron apps
 
 inputs:
