@@ -116,8 +116,10 @@ const runAction = () => {
 		log("Skipping build script because `skip_build` option is set");
 	} else {
 		log("Running the build script…");
-		if (useNpm || usePnpm) {
-			run(`${scriptRunner} run ${buildScriptName} --if-present`, pkgRoot);
+		if (useNpm) {
+			run(`npm run ${buildScriptName} --if-present`, pkgRoot);
+		} else if (usePnpm) {
+			run(`pnpm run --if-present ${buildScriptName}`, pkgRoot);
 		} else {
 			// TODO: Use `yarn run ${buildScriptName} --if-present` once supported
 			// https://github.com/yarnpkg/yarn/issues/6894
