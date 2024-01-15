@@ -70,6 +70,7 @@ const runAction = () => {
 	const buildScriptName = getInput("build_script_name", true);
 	const skipBuild = getInput("skip_build") === "true";
 	const useVueCli = getInput("use_vue_cli") === "true";
+	const isMonorepo = getInput("is_monorepo") === "true";
 	const args = getInput("args") || "";
 	const maxAttempts = Number(getInput("max_attempts") || "1");
 
@@ -78,8 +79,8 @@ const runAction = () => {
 	const appRoot = getInput("app_root") || pkgRoot;
 
 	const pkgJsonPath = join(pkgRoot, "package.json");
-	const pkgLockPath = join(pkgRoot, "package-lock.json");
-	const pnpmLockPath = join(pkgRoot, "pnpm-lock.yaml")
+	const pkgLockPath = join(pkgRoot, `${isMonorepo ? "../../" : ""}package-lock.json`);
+	const pnpmLockPath = join(pkgRoot, `${isMonorepo ? "../../" : ""}pnpm-lock.yaml`)
 
 	// Determine whether NPM or PNPM should be used to run commands (instead of Yarn, which is the default)
 	const useNpm = existsSync(pkgLockPath);
