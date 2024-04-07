@@ -32,7 +32,7 @@ GitHub Actions allows you to build your app on macOS, Windows and Linux without 
            uses: actions/checkout@v1
 
          - name: Install Node.js, NPM and Yarn
-           uses: actions/setup-node@v1
+           uses: actions/setup-node@v4
            with:
              node-version: 10
 
